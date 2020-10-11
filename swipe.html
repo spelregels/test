@@ -631,6 +631,7 @@ let touchstartX = 0;
 let touchstartY = 0;
 let touchendX = 0;
 let touchendY = 0;
+let speling = 10;
 
 document.addEventListener('touchstart', function(event) {
     touchstartX = event.changedTouches[0].screenX;
@@ -644,11 +645,11 @@ document.addEventListener('touchend', function(event) {
 }, false); 
 
 function handleGesture() {
-    if (touchendX < touchstartX) {
+    if (touchendX < touchstartX) && (abs(touchendY - touchstartY) < speling) {
         alert('Swiped left');
     }
     
-    if (touchendX > touchstartX) {
+    if (touchendX > touchstartX) && (abs(touchendY - touchstartY) < speling) {
         alert('Swiped right');
     }
     
