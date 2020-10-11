@@ -645,24 +645,12 @@ document.addEventListener('touchend', function(event) {
 }, false); 
 
 function handleGesture() {
-    if (touchendX < touchstartX) && (abs(touchendY - touchstartY) < speling) {
+    if ((touchendX < touchstartX) & (Math.abs(touchendY - touchstartY) < speling)) {
         alert('Swiped left');
     }
     
-    if (touchendX > touchstartX) && (abs(touchendY - touchstartY) < speling) {
+    if ((touchendX > touchstartX) & (Math.abs(touchendY - touchstartY) < speling)) {
         alert('Swiped right');
-    }
-    
-    if (touchendY < touchstartY) {
-        alert('Swiped up');
-    }
-    
-    if (touchendY > touchstartY) {
-       alert('Swiped down');
-    }
-    
-    if (touchendY === touchstartY) {
-       alert('Tap');
     }
 }</script>
 </head>
