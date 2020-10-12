@@ -9,18 +9,20 @@
 	<title>KNHB Spelregels Hockey 2020</title>
 	<link rel="icon" type="image/png" href="https://spelregels.github.io/hockey/appicon.png">
 <style>
+HTML {
+	font-size : 100%;
+}
 BODY {  
 	font-family: 'Segoe UI', Roboto, Helvetica Neue, Helvetica, Arial, sans-serif;
 	/* marge zodat onderste deel van de pagina niet onder het menu blijft staan */
 	margin : 0 0 54px 0;
 	min-width : 370px;
-	font-size : 100%;
 }
 P {
 	margin : 0;
 }
 P.witruimte {
-	margin-top : 0.6em;
+	margin-top : 0.6rem;
 }
 TABLE { 
 	border : none; 
@@ -34,7 +36,7 @@ THEAD {
 THEAD TH {
 	padding-top : 7px;
 	text-align : left; 
-	font-size : 1.5em; 
+	font-size : 1.5rem; 
 	background-color : #EF790C;
 	color : #FFFFFF;
 }
@@ -81,7 +83,7 @@ LI {
 /* STIJLEN VOOR SPELREGELS =================================== */
 
 TABLE.spelregels {
-	margin-bottom : 0.35em;
+	margin-bottom : 0.35rem;
 }
 /* TH's in de THEAD sticky maken.
    Sticky toewijzen op THEAD zelf werkt niet in Chrome
@@ -177,7 +179,7 @@ SPAN.per2020 {
 	width : 100%;
 	position : fixed;
 	bottom : 0px;
-	font-size : 1.4em;
+	font-size : 1.4rem;
 	background-color: rgb(214, 214, 214);
 	white-space : nowrap;
 	overflow-x : auto;
@@ -224,7 +226,7 @@ DIV.rand {
 /* STIJLEN VOOR HULPTABELLEN =================================== */
 
 TABLE.hulptabel {
-	max-width : 46.8em;
+	max-width : 46.8rem;
 }
 /* matrix: tabel met kolommen met vaste breedte, cel linksboven geen
    achtergrondkleur, tekst in rij- en kolomkoppen nooit vetgedrukt */
@@ -241,10 +243,10 @@ TABLE.matrix-tabel TR:first-child TD:first-child, TABLE.hulptabel TD.normaal {
 }
 TABLE.hulptabel TD {
 	text-align : center;
-	height : 4.05em;
+	height : 4.05rem;
 	border-top : solid 2px white;
 	border-right : solid 2px #FFFFFF;
-	padding : 0.5em;
+	padding : 0.5rem;
 }
 TABLE.hulptabel TR TD:last-child {
 	border-right : none;
@@ -279,8 +281,8 @@ DIV.tegels DIV {
 	margin-top : 2px;
 	margin-left : 2px;
 	width : calc(25% - 2px);
-	max-width : 7.15em;
-	height : 5.05em;
+	max-width : 7.15rem;
+	height : 5.05rem;
 	float : left;
 	background-color : #F9F9F9;
 }
@@ -289,7 +291,7 @@ DIV.tegels DIV A, DIV.tegels DIV SPAN {
 	display : table-cell;
 	text-align : center;
 	vertical-align : middle;
-	padding : 0.5em;
+	padding : 0.5rem;
 	text-decoration : none;
 	font-weight : normal;
 }
@@ -583,7 +585,7 @@ function hoofdstukTerugVerder(terug) {
 	var eerste = true;
 	var i = 0;
 	// zoeken eerste tabel die zichtbaar is
-	while ((i <= x.length) & ((x[i].offsetTop + x[i].offsetHeight) < window.pageYOffset)) {
+	while ((i < x.length) & ((x[i].offsetTop + x[i].offsetHeight) < window.pageYOffset)) {
 		i++;
 	}
 	if (terug) {
@@ -596,7 +598,7 @@ function hoofdstukTerugVerder(terug) {
 			x[i-1].scrollIntoView();
 		}
 	}
-	else if (i < x.length) {
+	else if (i < x.length - 1) {
 		x[i+1].scrollIntoView();
 	}
 }
