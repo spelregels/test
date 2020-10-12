@@ -436,10 +436,10 @@ function navigatie(el) {
 		// te worden, dit gaat wel goed.
 		// De +1 in de scroll-hoeveelheid heeft te maken met de negatieve top-marge op tabellen, zie de TABEL stijl voor informatie.
 		if ((headerHoogte > 0) && (y != scrollnaar)) {
-			window.scrollBy(0, -headerHoogte + 0);
+			window.scrollBy(0, -headerHoogte + 1);
 		}
 		else {
-			window.scrollBy(0, 0);
+			window.scrollBy(0, 1);
 		}
 		
 		// Doelelement, als dat in een spelregeltabel staat, highlighten om duidelijker te maken dat dit de tekst is waarnaar gesprongen is.
