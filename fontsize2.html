@@ -9,7 +9,7 @@
 	<link rel="icon" type="image/png" href="https://spelregels.github.io/hockey/appicon.png">
 <style>
 HTML {
-	font-size : 100%;
+	font-size : 200%;
 }
 BODY {  
 	font-family: 'Segoe UI', Roboto, Helvetica Neue, Helvetica, Arial, sans-serif;
@@ -118,12 +118,12 @@ TABLE.spelregels TR TH:first-child:not(:last-child) {
 	width : 1px;
 }
 TABLE.spelregels TD {
-	padding : 0.62em;
+	padding : 0.60em;
 }
 .opmerking { 
 	font-style : italic; 
 	font-size : 90%;
-	margin-top : 0.35em;
+	margin-top : 0.4em;
 	color : #777777;
 }
 DIV.per2020 {
@@ -217,15 +217,11 @@ DIV.witruimte {
 	clear : both;
 }
 
-DIV.rand {
-	height : 5px;
-	clear : both;
-}
-
 /* STIJLEN VOOR HULPTABELLEN =================================== */
 
 TABLE.hulptabel {
-	max-width : 46.8rem;
+	max-width : 48rem;
+	margin-bottom : 0.35rem;
 }
 /* matrix: tabel met kolommen met vaste breedte, cel linksboven geen
    achtergrondkleur, tekst in rij- en kolomkoppen nooit vetgedrukt */
@@ -242,7 +238,7 @@ TABLE.matrix-tabel TR:first-child TD:first-child, TABLE.hulptabel TD.normaal {
 }
 TABLE.hulptabel TD {
 	text-align : center;
-	height : 4.05rem;
+	height : 4.1rem;
 	border-top : solid 2px white;
 	border-right : solid 2px #FFFFFF;
 	padding : 0.5rem;
@@ -280,8 +276,8 @@ DIV.tegels DIV {
 	margin-top : 2px;
 	margin-left : 2px;
 	width : calc(25% - 2px);
-	max-width : 7.15rem;
-	height : 5.05rem;
+	max-width : 7.2rem;
+	height : 5.1rem;
 	float : left;
 	background-color : #F9F9F9;
 }
@@ -658,8 +654,6 @@ document.onkeydown 	= homeEnd;
 </td></tr>
 </table>
 
-<div class="rand"></div>
-	
 <table id="1" class="spelregels">
 <thead><tr><th>1</th><th>Speelveld</th></tr></thead>
 
@@ -1561,8 +1555,6 @@ KNHB: persoonlijke straffen voor teambegeleiders
 </td></tr>
 </table>
 
-<div class="rand"></div>
-
 <table id="strafcornertabel" class="hulptabel">
 <thead><tr><th colspan="2">straf bij overtreding tijdens strafcorner</th></tr></thead>
 <tr><td>
@@ -1584,8 +1576,6 @@ vrije slag verdediging
 <a href="#13.6f">andere overtreding</a> aanvaller
 </td></tr>
 </table>
-
-<div class="rand"></div>
 
 <table id="slagentoegestaan" class="hulptabel matrix-tabel">
 <thead><tr><th colspan="6">slagen toegestaan</th></tr></thead>
