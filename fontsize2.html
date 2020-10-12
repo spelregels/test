@@ -13,9 +13,8 @@ HTML {
 }
 BODY {  
 	font-family: 'Segoe UI', Roboto, Helvetica Neue, Helvetica, Arial, sans-serif;
-	/* marge zodat onderste deel van de pagina niet onder het menu blijft staan */
-	margin : 0 0 54px 0;
-	min-width : 370px;
+	margin: 0;
+	min-width : 23em;
 }
 P {
 	margin : 0;
@@ -445,7 +444,7 @@ function navigatie(el) {
 // script om actieve link(s) uit menu mbv stijl als actief te markeren
 
 // bij scrollen markering instellen
-window.onscroll = function() {markeren();};
+window.onscroll = markeren;
 
 // Voor alle tabellen in de 'viewport': de link daar naartoe vanuit het menu, voorzien van stijl.
 // De eerste/bovenste zichtbare tabel krijgt stijl 'actief', de rest krijgt de stijl 'zichtbaar'.
