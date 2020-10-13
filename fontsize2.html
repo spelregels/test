@@ -67,13 +67,13 @@ OL {
 	list-style-type : lower-alpha;
 	margin-bottom : 0px;
 	margin-top : 0px;
-	padding-left : 1.5em;
+	padding-left : 1.6em;
 }
 UL {
 	margin-bottom : 0px;
 	margin-top : 0px;
 	list-style-type : square;
-	padding-left : 1.5em;
+	padding-left : 1.6em;
 }
 LI { 
 	margin-top : 0.3em;
@@ -95,11 +95,6 @@ TABLE.sticky-tabelkop THEAD TH {
 	position : sticky;
 	top : 0px;
 }
-TABLE.sticky-tabelkop {
-	/* sticky header staat vaak 1 pixelrij onder de bovenkant van de pagina, je ziet dan de tekst ook
-	   op die pixelrij voorbij komen, de negatieve marge lost dit op */
-	margin-top : 0px;
-}
 TABLE.spelregels TH { 
 	text-align : left;
 	vertical-align : top;
@@ -119,7 +114,7 @@ TABLE.spelregels TD {
 }
 .opmerking { 
 	font-style : italic; 
-	font-size : 90%;
+	font-size : 0.9em;
 	margin-top : 0.4em;
 	color : #777777;
 }
@@ -184,7 +179,7 @@ SPAN.per2020 {
 #menu A {
 	display : table-cell;
 	text-decoration : none;
-	padding : 12px 3.5px 4px 3.5px;
+	padding : 11px 3.5px 4px 3.5px;
 	border-bottom : 8px solid rgba(0,0,0,0);
 	/* cijfers 1 t/m 9 relatief meer breedte geven */
 	min-width : 0.65em;
@@ -193,7 +188,7 @@ SPAN.per2020 {
 	-webkit-tap-highlight-color: transparent;
 }
 #menu A:first-child {
-	padding-left : 0.45em;
+	padding-left : 10px;
 }
 #menu A:hover, #menu A.actief:hover, #menu A.zichtbaar:hover {
 	background-color : black;
@@ -208,9 +203,13 @@ SPAN.per2020 {
 }
 
 /* STIJL VOOR WITRUIMTE TUSSEN HULPTABELLEN/INDEX ETC =================================== */
+/* Witruimte nodig om bij het volgen van een hyperlink naar een term, ook als die onderin de
+   begrippenlijst staat, niet tevens al de index in beeld te krijgen. Daarnaast nodig om de 
+   laatste hulptabel bovenaan de pagina te kunnen zetten bij het volgen van een hyperlink
+   daar naartoe. */
 
 DIV.witruimte {
-	height : 700px;
+	height : calc(100vh - 5rem - 32px);
 	clear : both;
 }
 
@@ -298,7 +297,7 @@ DIV.tegels DIV.index-onderwerp {
 
 /* KLEUREN IN INDEX EN HULPTABELLEN ======================================= */
 
-TABLE.appendix THEAD TH, TABLE.hulptabel THEAD TH {
+TABLE.index THEAD TH, TABLE.hulptabel THEAD TH {
 	background-color : #777777;
 }
 </style>
@@ -373,10 +372,14 @@ function navigatie(el) {
 		var y = doel.closest(".spelregels");
 		var headerHoogte = 0;
 
-		// Indien doelement ligt in spelregeltabel.
-		if (y != null) { 
+		// Indien doelement ligt *binnen* een spelregeltabel (doelelement is niet de tabel zelf) 
+		if ((y != null) & (y != doel)) { 
 			// Hoogte van de header bepalen, die is nodig voor correctie op het scrollen.
-			var headerHoogte = y.tHead.clientHeight; 
+			// Vermoedelijk zorgt onnauwkeurigheid (clientHeight lijkt afgeronde waarde, terwijl de developer tools in Chrome een
+			// getal met een decimaal toont) ervoor dat de headerhoogte omhoog afgerond wordt, waardoor de scroll correctie te groot wordt
+			// en de header na scrollcorrectie niet helemaal bovenaan de pagina staat maar een pixelrij eronder.
+			// Daarom wordt er een arbitrair beetje van de hoogte afgetrokken, om zeker te zijn dat de header wel helemaal bovenaan komt te staan.
+			var headerHoogte = y.tHead.clientHeight - 0.5; 
 
 			// Zoeken bovenliggende tabelrij = bovenliggend artikel.
 			var artikel = doel.closest("tr");
@@ -424,18 +427,11 @@ function navigatie(el) {
 		scrollnaar.scrollIntoView();
 
 		// Indien de bestemming in tabel met sticky header staat, dan moet de scrollpositie gecorrigeerd worden;
-		// de standaard scrollfunctie plaatst het doelelement helemaal bovenaan de pagina en zet de sticky header eroverheen.
-		// Als de bestemming (het begin van) de tabel zelf is dan hoeft de scrollpositie niet gecorrigeerd
-		// te worden, dit gaat wel goed.
-		// De +1 in de scroll-hoeveelheid heeft te maken met de negatieve top-marge op tabellen, zie de TABEL stijl voor informatie.
-		if ((headerHoogte > 0) && (y != scrollnaar)) {
-			window.scrollBy(0, -headerHoogte + 1);
-		}
-		else {
-			window.scrollBy(0, 1);
-		}
+		// de standaard scrollfunctie plaatst het doelelement helemaal bovenaan de pagina en zet daarna de sticky header eroverheen.
+		// Daarom moet er ter correctie richting begin van de pagina gescrolld worden (tekst gaat omlaag), zover als de header hoog is.
+		window.scrollBy(0, -headerHoogte);
 		
-		// Doelelement, als dat in een spelregeltabel staat, highlighten om duidelijker te maken dat dit de tekst is waarnaar gesprongen is.
+		// Doelelement, als dat in een spelregeltabel staat, of een spelregeltabel is, highlighten om duidelijker te maken dat dit de tekst is waarnaar gesprongen is.
 		if (y != null) { knipper(doel) };
 	}
 }
@@ -589,6 +585,7 @@ function hoofdstukTerugVerder(terug) {
 			x[i-1].scrollIntoView();
 		}
 	}
+	// vooruit naar volgend hoofdstuk, als dat er is
 	else if (i < x.length - 1) {
 		x[i+1].scrollIntoView();
 	}
@@ -706,7 +703,7 @@ Als een team meer dan het toegestane aantal spelers in het veld heeft staan word
 van het betrokken team krijgt een <a href="#14">persoonlijke straf</a>. Beslissingen die genomen zijn voordat de tijd werd stil gezet kunnen niet teruggedraaid of veranderd worden. De wedstrijd wordt hervat met een <a href="#13.2">vrije slag</a> voor het team dat niet met teveel spelers speelde. Als de scheidsrechter vlak voor het stilzetten van de tijd reeds een vrije slag, strafcorner of strafbal voor dit team had toegekend wordt de wedstrijd hervat met de uitvoering hiervan.</div>
 <div class="opmerking">
 KNHB: bij de aanvang van een bondswedstrijd moeten er per team ten minste acht speelgerechtigde spelers in het speelveld zijn. Als gedurende een wedstrijd een team uit minder dan acht spelers komt te bestaan wordt de wedstrijd voortgezet.</div>
-<div class="opmerking">
+<div id="wedstrijdformulier" class="opmerking">
 KNHB: voor de aanvang van een bondswedstrijd moet een (digitaal) wedstrijdformulier, met daarop ingevuld de namen van de (ten hoogste 16) spelers van beide teams, worden overhandigd aan de scheidsrechters. Alleen op dat formulier vermelde spelers mogen in het speelveld komen en/of op de teambank plaatsnemen. Tijdens de wedstrijd kunnen geen namen op het formulier worden gewijzigd, maar niet-standaardteams kunnen tot het maximale aantal van 16 spelers is bereikt, nieuwe spelers voor vermelding op het formulier aanmelden bij de scheidsrechters.</div>
 <div class="opmerking per2018 per2020">
 KNHB: teams mogen onder vastgestelde voorwaarden in de Hoofdklasse <span class="per2020">en Promotieklasse</span> wedstrijden <span class="per2020">voor 1e teams</span> een 17e speler op het wedstrijdformulier opvoeren.</div>
@@ -813,7 +810,7 @@ Aanvoerders zijn verplicht een onderscheidende armband of een ander onderscheide
 Aanvoerders zijn verantwoordelijk voor het gedrag van alle spelers van hun team en moeten er voor zorgen dat wissels van hun team correct worden uitgevoerd.
 <div class="opmerking">Een <a href="#14">persoonlijke straf</a> wordt toegekend aan een aanvoerder die deze verantwoordelijkheden niet nakomt.</div>
 <div class="opmerking">KNHB: aanvoerders zijn tevens verantwoordelijk voor het gedrag van alle <a href="#teambegeleiders">teambegeleiders</a> van hun team tijdens een wedstrijd.</div>
-<div class="opmerking">KNHB: aanvoerders dragen namens hun vereniging ook verantwoordelijkheid voor de correcte invulling en afhandeling van het wedstrijdformulier.</div>
+<div class="opmerking">KNHB: aanvoerders dragen namens hun vereniging ook verantwoordelijkheid voor de correcte invulling en afhandeling van het <a href="#wedstrijdformulier">wedstrijdformulier</a>.</div>
 </td></tr>
 </table>
 
@@ -1424,8 +1421,6 @@ KNHB: persoonlijke straffen voor teambegeleiders
 </td></tr>
 </table>
 
-<div class="witruimte"></div>
-
 <table id="begrippenlijst" class="spelregels">
 <thead><tr><th>Termen en begrippen</th></tr></thead>
 <tr id="speler"><td><span>Speler</span> Eén van de leden van een team.
@@ -1458,7 +1453,7 @@ KNHB: persoonlijke straffen voor teambegeleiders
 
 <div class="witruimte"></div>
 
-<table id="index" class="appendix sticky-tabelkop">
+<table id="index" class="index sticky-tabelkop">
 <thead><tr><th>INDEX</th></tr></thead>
 <tr><td>
 <div class="tegels">
@@ -1552,7 +1547,7 @@ KNHB: persoonlijke straffen voor teambegeleiders
 </table>
 
 <table id="strafcornertabel" class="hulptabel">
-<thead><tr><th colspan="2">straf bij overtreding tijdens strafcorner</th></tr></thead>
+<thead><tr><th colspan="2">straf op overtreding tijdens strafcorner</th></tr></thead>
 <tr><td>
 opnieuw nemen
 </td><td class="groen">
