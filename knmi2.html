@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+	<meta charset="UTF-8">
+	<title>KNMI</title>
+	<meta name="mobile-web-app-capable" content="yes">
+	<meta name="theme-color" content="#000000">
+	<link rel="shortcut icon" href="https://cdn.knmi.nl/assets/favicon-06dd94e551015e92293dd6d7525ab5c1ab9a51f68bebdf0b4669c12d69dbe522.ico" />
+	<link rel="apple-touch-icon" href="https://cdn.knmi.nl/assets/apple-touch-icon-220a47425fd62d44dc04800d3067032801342cd842cc7935b89dbca0cec4a7c9.png" />
+<style>
+html, body {
+    margin:0;
+	background-color : black;
+}
+div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+img{
+	vertical-align : center;
+}
+</style>
+</head>
+<body>
+<div>
+<img id="radar" src="https://cdn.knmi.nl/knmi/map/general/weather-map.gif" alt="">
+</div>
+<script>
+	var x = document.getElementById("radar");
+	x.width = window.innerHeight * 616 / 645;
+</script>
+</body>
+</html>
