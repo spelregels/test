@@ -13,7 +13,7 @@ html, body {
     margin:0;
 	background-color : black;
 }
-div {
+div.container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -21,11 +21,50 @@ div {
 }
 img{
 	vertical-align : center;
+	z-index : 3;
 }
+div.boven, div.onder {
+  position:fixed;
+  width : 100%;
+  height : 50%;
+  z-index : 2;
+  }
+div.boven {
+	top : 0px;
+	background-color : rgb(52,146,187);
+}
+div.onder {
+	bottom : 0px;
+	background-color : rgb(113,165,75);
+}
+div.links, div.rechts {
+  position:fixed;
+  width : 50%;
+  height : 100%;
+  z-index : 1;
+  }
+div.links {
+	left : 0px;
+	background-color : rgb(52,146,187);
+}
+div.rechts {
+	right : 0px;
+	background-color : rgb(113,165,75);
+}
+
+
 </style>
 </head>
 <body>
-<div>
+<div class="container">
+<div id="boven" class="boven">
+</div>
+<div id="onder" class="onder">
+</div>
+<div class="links">
+</div>
+<div class="rechts">
+</div>
 <img id="radar" src="https://cdn.knmi.nl/knmi/map/general/weather-map.gif" alt="">
 </div>
 <script>
@@ -35,11 +74,15 @@ function formaatAfbeelding () {
 		x.style.height = 'auto';
 		x.style.width  = '';
 		x.width = window.innerWidth; 
+		boven.style.display = '';
+		onder.style.display = '';
 	}
 	else {
 		x.style.width  = 'auto';
 		x.style.height = '';
 		x.height = window.innerHeight;
+		boven.style.display = 'none';
+		onder.style.display = 'none';
 	}
 };
 formaatAfbeelding();
