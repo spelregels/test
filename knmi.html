@@ -20,14 +20,30 @@ div {
   height: 100vh;
 }
 img{
-	height : 100vmin;
 	vertical-align : center;
 }
 </style>
 </head>
 <body>
 <div>
-<img src="https://cdn.knmi.nl/knmi/map/general/weather-map.gif" alt="">
+<img id="radar" src="https://cdn.knmi.nl/knmi/map/general/weather-map.gif" alt="">
 </div>
+<script>
+function formaatAfbeelding () {
+	var x = document.getElementById("radar");
+	if ( ( window.innerHeight / window.innerWidth ) > (645 / 616) ) {
+		x.style.height = 'auto';
+		x.style.width  = '';
+		x.width = window.innerWidth; 
+	}
+	else {
+		x.style.width  = 'auto';
+		x.style.height = '';
+		x.height = window.innerHeight;
+	}
+};
+formaatAfbeelding();
+window.addEventListener("resize", formaatAfbeelding);
+</script>
 </body>
 </html>
