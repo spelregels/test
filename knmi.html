@@ -57,9 +57,8 @@ function formaatAfbeelding () {
 	}
 };
 
-formaatAfbeelding();
-
-window.addEventListener("resize", formaatAfbeelding );
+document.getElementById('afbeelding').onload = formaatAfbeelding;
+window.addEventListener('resize', formaatAfbeelding);
 </script>
 
 </body>
