@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="nl">
 <head>
@@ -19,7 +18,12 @@ body {
 	justify-content: center;
 	align-items: center;
 	height: 100vh;
-	background-image: linear-gradient(-46.3169deg, rgb(113,165,75) 50%, rgb(52,146,187) 50%, rgb(52,146,187));
+}
+.horizontaal {
+	background-image: linear-gradient(to bottom, rgb(52,146,187) 50%, rgb(113,165,75) 50%, rgb(113,165,75));
+}
+.verticaal {
+	background-image: linear-gradient(to right, rgb(52,146,187) 50%, rgb(113,165,75) 50%, rgb(113,165,75));
 }
 div {
 	position : fixed;
@@ -49,11 +53,15 @@ function formaatAfbeelding () {
 		x.style.height = 'auto';
 		x.style.width  = '';
 		x.width = window.innerWidth; 
+		document.body.classList.remove("verticaal");
+		document.body.classList.add("horizontaal");
 	}
 	else {
 		x.style.width  = 'auto';
 		x.style.height = '';
 		x.height = window.innerHeight;
+		document.body.classList.remove("horizontaal");
+		document.body.classList.add("verticaal");
 	}
 };
 
