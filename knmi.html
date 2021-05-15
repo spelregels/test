@@ -18,22 +18,7 @@ body {
 	justify-content: center;
 	align-items: center;
 	height: 100vh;
-}
-.horizontaal {
-	background-image: linear-gradient(to bottom, rgb(52,146,187) 50%, rgb(113,165,75) 50%, rgb(113,165,75));
-}
-.verticaal {
-	background-image: linear-gradient(to right, rgb(52,146,187) 50%, rgb(113,165,75) 50%, rgb(113,165,75));
-}
-div {
-	position : fixed;
-	display : block;
-	left : 0px;
-	bottom : 0px;
-	height : 13.51%;
-	width : 100%;
-	background-color : rgb(113,165,75);
-	z-index : -1;
+	background-image: linear-gradient(-46.3169deg, rgb(113,165,75) 50%, rgb(52,146,187) 50%, rgb(52,146,187));
 }
 </style>
 </head>
@@ -42,35 +27,22 @@ div {
 
 <img id="afbeelding" src="https://cdn.knmi.nl/knmi/map/general/weather-map.gif" alt="">
 
-<div id="lijn">
-</div>
-
 <script>
 function formaatAfbeelding () {
 	var x = document.getElementById("afbeelding");
-<<<<<<< HEAD
-
 	if ( ( window.innerHeight / window.innerWidth ) > (x.naturalHeight / x.naturalWidth) ) {
-=======
-	if ( ( window.innerHeight / window.innerWidth ) > (x.height / x.width) ) {
->>>>>>> parent of c0b8ccd (Update knmi.html)
 		x.style.height = 'auto';
 		x.style.width  = '';
 		x.width = window.innerWidth; 
-		document.body.classList.remove("verticaal");
-		document.body.classList.add("horizontaal");
 	}
 	else {
 		x.style.width  = 'auto';
 		x.style.height = '';
 		x.height = window.innerHeight;
-		document.body.classList.remove("horizontaal");
-		document.body.classList.add("verticaal");
 	}
 };
-
-document.getElementById('afbeelding').onload = formaatAfbeelding;
-window.addEventListener('resize', formaatAfbeelding);
+formaatAfbeelding();
+window.addEventListener("resize", formaatAfbeelding);
 </script>
 
 </body>
