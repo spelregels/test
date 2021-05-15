@@ -30,6 +30,9 @@ div {
 	background-color : rgb(113,165,75);
 	z-index : -1;
 }
+img {
+	visibility: hidden;
+}
 </style>
 </head>
 
@@ -44,7 +47,7 @@ div {
 function formaatAfbeelding () {
 	var x = document.getElementById("afbeelding");
 
-	if ( ( window.innerHeight / window.innerWidth ) > (445 / 425) ) {
+	if ( ( window.innerHeight / window.innerWidth ) > (x.naturalHeight / x.naturalWidth) ) {
 		x.style.height = 'auto';
 		x.style.width  = '';
 		x.width = window.innerWidth; 
@@ -56,7 +59,10 @@ function formaatAfbeelding () {
 	}
 };
 
-formaatAfbeelding();
+window.onload = function() {
+	formaatAfbeelding();
+	document.getElementById('afbeelding').style.visibility = 'visible';
+}
 window.addEventListener('resize', formaatAfbeelding);
 </script>
 
