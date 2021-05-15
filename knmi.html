@@ -26,7 +26,7 @@ div {
 	display : block;
 	left : 0px;
 	bottom : 0px;
-	height : 0px;
+	height : 13.51%;
 	width : 100%;
 	background-color : rgb(113,165,75);
 	z-index : -1;
@@ -44,8 +44,6 @@ div {
 <script>
 function formaatAfbeelding () {
 	var x = document.getElementById("afbeelding");
-	var y = document.getElementById("lijn");
-	var hoogteDiv = window.innerHeight / 7.4;
 
 	if ( ( window.innerHeight / window.innerWidth ) > (x.naturalHeight / x.naturalWidth) ) {
 		x.style.height = 'auto';
@@ -56,7 +54,6 @@ function formaatAfbeelding () {
 		x.style.width  = 'auto';
 		x.style.height = '';
 		x.height = window.innerHeight;
-		y.style.height = hoogteDiv.toString() + "px";
 	}
 };
 
