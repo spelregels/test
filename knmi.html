@@ -21,6 +21,16 @@ body {
 	height: 100vh;
 	background-image: linear-gradient(-46.3169deg, rgb(113,165,75) 50%, rgb(52,146,187) 50%, rgb(52,146,187));
 }
+div {
+	position : fixed;
+	display : block;
+	left : 0px;
+	bottom : 0px;
+	height : 0px;
+	width : 100%;
+	background-color : rgb(113,165,75);
+	z-index : -1;
+}
 </style>
 </head>
 
@@ -28,9 +38,15 @@ body {
 
 <img id="afbeelding" src="https://cdn.knmi.nl/knmi/map/general/weather-map.gif" alt="">
 
+<div id="lijn">
+</div>
+
 <script>
 function formaatAfbeelding () {
 	var x = document.getElementById("afbeelding");
+	var y = document.getElementById("lijn");
+	var hoogteDiv = window.innerHeight / 7.4;
+
 	if ( ( window.innerHeight / window.innerWidth ) > (x.naturalHeight / x.naturalWidth) ) {
 		x.style.height = 'auto';
 		x.style.width  = '';
@@ -40,10 +56,13 @@ function formaatAfbeelding () {
 		x.style.width  = 'auto';
 		x.style.height = '';
 		x.height = window.innerHeight;
+		y.style.height = hoogteDiv.toString() + "px";
 	}
 };
+
 formaatAfbeelding();
-window.addEventListener("resize", formaatAfbeelding);
+
+window.addEventListener("resize", formaatAfbeelding );
 </script>
 
 </body>
