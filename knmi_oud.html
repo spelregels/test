@@ -41,13 +41,8 @@ div {
 </div>
 
 <script>
-function herladen() {
-    document.getElementById('afbeelding').src = 'https://cdn.knmi.nl/knmi/map/general/weather-map.gif?rand=' + Math.random();
-alert ('hallo');
-}
-
 function formaatAfbeelding () {
-	var x = document.getElementById('afbeelding');
+	var x = document.getElementById("afbeelding");
 
 	if ( ( window.innerHeight / window.innerWidth ) > (445 / 425) ) {
 		x.style.height = 'auto';
@@ -63,7 +58,6 @@ function formaatAfbeelding () {
 
 formaatAfbeelding();
 window.addEventListener('resize', formaatAfbeelding);
-window.addEventListener('focus', herladen);
 
 </script>
 

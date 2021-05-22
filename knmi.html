@@ -60,9 +60,9 @@ formaatAfbeelding();
 window.addEventListener('resize', formaatAfbeelding);
 
 setInterval(function() {
-    var myImageElement = document.getElementById('afbeelding');
-    myImageElement.src = 'https://cdn.knmi.nl/knmi/map/general/weather-map.gif?rand=' + Math.random();
-}, 60000);
+    document.getElementById('afbeelding').src = 'https://cdn.knmi.nl/knmi/map/general/weather-map.gif?' + new Date().getTime();
+	formaatAfbeelding();
+}, 27900);
 
 </script>
 
