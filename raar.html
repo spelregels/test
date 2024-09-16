@@ -10,39 +10,32 @@
 <style>
 BODY {  
 	font-family: 'Segoe UI', Roboto, Helvetica Neue, Helvetica, Arial, sans-serif;
-	margin: 0;
-	min-width : 23em;
-}
-P {
-	margin : 0;
-}
-P.witruimte {
-	margin-top : 0.6rem;
+	/* marge zodat onderste deel van de pagina niet onder het menu blijft staan */
+	margin : 0 0 54px 0;
+	min-width : 370px;
 }
 TABLE { 
 	border : none; 
 	border-collapse	:collapse;
 	width : 100%;
-	margin-bottom : 0.25rem;
 }
 THEAD {
 	border : none; 
 	border-collapse	:collapse;
 }
 THEAD TH {
-	padding-top : 7px;
 	text-align : left; 
 	font-size : 1.5em; 
 	background-color : #EF790C;
 	color : #FFFFFF;
 }
 TH { 
-	padding : 10px 10px 7px 10px;
+	padding : 7px 10px 7px 10px;
 	border : none; 
 	border-collapse	:collapse;
 }
 TABLE THEAD TH:last-child:after {
-	content: "veldregels 2024";
+	content: "veldregels 2018";
 	font-size : 80%;
 	opacity : 0.5;
 	position : relative;
@@ -60,23 +53,6 @@ TD {
 A { 
 	font-weight : bold;
 	color : inherit;
-}
-A:FOCUS {
-	outline-color: #EF790C;
-}
-A.video {
-	display : inline-block;
-	position : relative;
-	top : 2px;
-	width : 1.1em;
-	height : 0.8em;
-	margin-left : 0.1em;
-	margin-right : 0.25em;
-	border-width : 1px;
-	border-style : solid;
-	border-radius : 2px;
-	border-color: #FFB93C #EF790C #EF790C #FFB93C;
-	background-image: linear-gradient(to bottom right, white, #F3F3F3, #CCCCCC);
 }
 OL { 
 	list-style-type : lower-alpha;
