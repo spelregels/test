@@ -8,34 +8,44 @@
 	<title>KNHB Spelregels Hockey 2024</title>
 	<link rel="icon" type="image/png" href="https://spelregels.github.io/hockey/appicon.png">
 <style>
+HTML {
+	font-size : 100%;
+}
 BODY {  
 	font-family: 'Segoe UI', Roboto, Helvetica Neue, Helvetica, Arial, sans-serif;
-	/* marge zodat onderste deel van de pagina niet onder het menu blijft staan */
-	margin : 0 0 54px 0;
-	min-width : 370px;
+	margin: 0;
+	min-width : 23em;
+}
+P {
+	margin : 0;
+}
+P.witruimte {
+	margin-top : 0.6rem;
 }
 TABLE { 
 	border : none; 
 	border-collapse	:collapse;
 	width : 100%;
+	margin-bottom : 0.25rem;
 }
 THEAD {
 	border : none; 
 	border-collapse	:collapse;
 }
 THEAD TH {
+	padding-top : 7px;
 	text-align : left; 
-	font-size : 1.5em; 
+	font-size : 1.5rem; 
 	background-color : #EF790C;
 	color : #FFFFFF;
 }
 TH { 
-	padding : 7px 10px 7px 10px;
+	padding : 10px 10px 7px 10px;
 	border : none; 
 	border-collapse	:collapse;
 }
 TABLE THEAD TH:last-child:after {
-	content: "veldregels 2018";
+	content: "veldregels 2024";
 	font-size : 80%;
 	opacity : 0.5;
 	position : relative;
@@ -53,6 +63,23 @@ TD {
 A { 
 	font-weight : bold;
 	color : inherit;
+}
+A:FOCUS {
+	outline-color: #EF790C;
+}
+A.video {
+	display : inline-block;
+	position : relative;
+	top : 2px;
+	width : 1.1em;
+	height : 0.8em;
+	margin-left : 0.1em;
+	margin-right : 0.25em;
+	border-width : 1px;
+	border-style : solid;
+	border-radius : 2px;
+	border-color: #FFB93C #EF790C #EF790C #FFB93C;
+	background-image: linear-gradient(to bottom right, white, #F3F3F3, #CCCCCC);
 }
 OL { 
 	list-style-type : lower-alpha;
@@ -273,30 +300,26 @@ DIV.tegels DIV {
 	margin-top : 2px;
 	margin-left : 2px;
 	width : calc(25% - 2px);
-	max-width : 115px;
-	height : 75px;
+	max-width : 7.2rem;
+	height : 5.1rem;
 	float : left;
 	background-color : #F9F9F9;
 }
 /* tegelvullende tabel in bovenstaande DIV tbv verticale centrering tekst */
 DIV.tegels DIV A, DIV.tegels DIV SPAN {
 	display : table-cell;
-	height : 65px;
-	width : 100%;
 	text-align : center;
 	vertical-align : middle;
-	padding : 8px;
+	padding : 0.5rem;
 	text-decoration : none;
 	font-weight : normal;
-}
-DIV.tegels DIV A:HOVER {
-	background-color : #EF790C;
-	color : white;
 }
 /* stijl die de tegel aan het begin van een nieuwe regel plaatst */
 DIV.tegels DIV.index-onderwerp {
 	clear : left;
+	background-color : #FFBB00;
 }
+
 /* KLEUREN IN INDEX EN HULPTABELLEN ======================================= */
 
 TABLE.index THEAD TH, TABLE.hulptabel THEAD TH {
@@ -594,13 +617,13 @@ document.addEventListener('DOMContentLoaded', function() {
 	// als breedte terug. Hieronder alleen voor iPad opgelost, daar is inkorten nooit nodig.
 	if ((screen.width < x) && !(navigator.userAgent.match(/iPad/i) ? true : false)) {
 		document.getElementById('menu-inhoud').innerHTML = '↑';
-		document.getElementById('menu-inhoud').style.paddingLeft = '22px';
+		document.getElementById('menu-inhoud').style.paddingLeft = '10px';
 		document.getElementById('menu-inhoud').style.paddingTop = '0px';
 		document.getElementById('menu-inhoud').style.paddingBottom = '0px';
 		document.getElementById('menu-termen').innerHTML = 't';
 //		document.getElementById('menu-termen').style.fontWeight = 'normal';
 		document.getElementById('menu-index').innerHTML = 'i';
-		document.getElementById('menu-index').style.paddingRight = '22px';
+		document.getElementById('menu-index').style.paddingRight = '10px';
 	}
 	
 });
