@@ -8,14 +8,11 @@
 	<title>KNHB Spelregels Hockey 2024</title>
 	<link rel="icon" type="image/png" href="https://spelregels.github.io/hockey/appicon.png">
 <style>
-HTML {
-	font-size : 100%;
-}
 BODY {  
 	font-family: 'Segoe UI', Roboto, Helvetica Neue, Helvetica, Arial, sans-serif;
-	margin: 0;
-	margin-bottom: 54px;
-	min-width : 23em;
+	/* marge zodat onderste deel van de pagina niet onder het menu blijft staan */
+	margin : 0 0 54px 0;
+	min-width : 370px;
 }
 P {
 	margin : 0;
@@ -188,9 +185,8 @@ SPAN.per2024 {
 #menu {
 	width : 100%;
 	position : fixed;
-	z-index : 2; /* anders worden video links eroverheen gezet */
 	bottom : 0px;
-	font-size : 1.3rem;
+	font-size : 1.4rem;
 	background-color: rgb(214, 214, 214);
 	white-space : nowrap;
 	overflow-x : auto;
@@ -199,16 +195,17 @@ SPAN.per2024 {
 #menu A {
 	display : table-cell;
 	text-decoration : none;
-	padding : 11px 3.5px 4px 3.5px;
+	padding : 12px 3.5px 4px 3.5px;
 	border-bottom : 8px solid rgba(0,0,0,0);
 	/* cijfers 1 t/m 9 relatief meer breedte geven */
-	min-width : 0.65em;
+	min-width : 14.5px;
 	text-align : center;
-	/* geen blauwe achtergrondkleur tonen als vinger op item gehouden wordt */
-	-webkit-tap-highlight-color: transparent;
 }
 #menu A:first-child {
 	padding-left : 10px;
+}
+#menu A:hover, #menu A.actief:hover, #menu A.zichtbaar:hover {
+	background-color : black;
 }
 #menu A.actief {
 	background-color : white;
@@ -217,17 +214,6 @@ SPAN.per2024 {
 #menu A.zichtbaar {
 	background-color : rgba(255,255,255,.5);
 	border-bottom-color : rgba(239,121,12,.25);
-}
-
-/* STIJL VOOR WITRUIMTE TUSSEN HULPTABELLEN/INDEX ETC =================================== */
-/* Witruimte nodig om bij het volgen van een hyperlink naar een term, ook als die onderin de
-   begrippenlijst staat, niet tevens al de index in beeld te krijgen. Daarnaast nodig om de 
-   laatste hulptabel bovenaan de pagina te kunnen zetten bij het volgen van een hyperlink
-   daar naartoe. */
-
-DIV.witruimte {
-	height : calc(100vh - 5rem - 32px);
-	clear : both;
 }
 
 /* STIJLEN VOOR HULPTABELLEN =================================== */
