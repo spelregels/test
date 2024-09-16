@@ -154,10 +154,10 @@ DIV.per2018 {
 	border-bottom-color : rgba(239,121,12,.25);
 }
 
-/* STIJLEN VOOR HULPTABELLEN =================================== */
+/* STIJLEN VOOR SPELREGELTABELLEN =================================== */
 
-TABLE.hulptabel {
-	max-width : 48rem;
+TABLE.spelregeltabel {
+	max-width : 750px;
 }
 /* matrix: tabel met kolommen met vaste breedte, cel linksboven geen
    achtergrondkleur, tekst in rij- en kolomkoppen nooit vetgedrukt */
@@ -168,44 +168,19 @@ TABLE.matrix-tabel {
 TABLE.matrix-tabel TR:first-child TD A, TABLE.matrix-tabel TR TD:first-child A {
 	font-weight : normal;
 }
-TABLE.matrix-tabel TR:first-child TD:first-child, TABLE.hulptabel TD.normaal {
+TABLE.matrix-tabel TR:first-child TD:first-child, TABLE.spelregeltabel TD.normaal {
 	text-align : initial;
 	background-color : initial;
 }
-/* Hulptabellen krijgen borders tussen de cellen, maar niet aan de buitenrand van de 
-tabel, zodat de tabel strak tegen de linkerkant en rechterkant van het venster staat.
-NB: bij cellen die over meerdere rijen gaan (rowspan > 1) hoeft de eerste cel in een rij 
-niet helemaal links te staan, en de laatste niet helemaal rechts. Zie eerste hulptabel.
-Daarom krijgen cellen zowel links als rechts een border. De linker wordt
-weggehaald op de eerste cel, de rechter wordt weggehaald op de rechter. Als de eerste
-cel niet helemaal links staat, gaat het toch goed omdat de cel links daarvan nog zijn
-rechter border heeft. Gespiegeld geldt hetzelfde voor een laatste cel die niet helemaal
-rechts staat */
-TABLE.hulptabel TD {
+TABLE.spelregeltabel TD {
 	text-align : center;
-	height : 4.1rem;
+	height : 65px;
 	border-top : solid 2px white;
-	border-left : solid 2px #FFFFFF;
 	border-right : solid 2px #FFFFFF;
-	padding : 0.5rem;
+	padding : 8px;
 }
-TABLE.hulptabel TR TD:first-child {
-	border-left : none;
-}
-TABLE.hulptabel TR TD:last-child {
+TABLE.spelregeltabel TR TD:last-child {
 	border-right : none;
-}
-TABLE.hulptabel TD.rood {
-	background-color : #FFAAAA;
-}
-TABLE.hulptabel TD.geel, DIV.tegels DIV.index-link-hoofd  {
-	background-color : #fff2cc;
-}
-TABLE.hulptabel TD.groen {
-	background-color : #AAFFAA;
-}
-TABLE.hulptabel TD {
-	background-color : #E9E9E9;
 }
 
 /* STIJLEN VOOR TEGELS (INDEX EN INHOUD) =================================== */
@@ -225,55 +200,56 @@ DIV.tegels DIV {
 	margin-top : 2px;
 	margin-left : 2px;
 	width : calc(25% - 2px);
-	max-width : 7.2rem;
-	height : 5.1rem;
+	max-width : 115px;
+	height : 75px;
 	float : left;
 	background-color : #F9F9F9;
 }
 /* tegelvullende tabel in bovenstaande DIV tbv verticale centrering tekst */
 DIV.tegels DIV A, DIV.tegels DIV SPAN {
 	display : table-cell;
+	height : 65px;
+	width : 100%;
 	text-align : center;
 	vertical-align : middle;
-	padding : 0.5rem;
+	padding : 8px;
 	text-decoration : none;
 	font-weight : normal;
+}
+DIV.tegels DIV A:HOVER {
+	background-color : #EF790C;
+	color : white;
 }
 /* stijl die de tegel aan het begin van een nieuwe regel plaatst */
 DIV.tegels DIV.index-onderwerp {
 	clear : left;
+}
+/* KLEUREN VOOR TABELLEN, INDEX, INHOUD =================================== */
+
+TABLE.spelregeltabel TD.rood {
+	background-color : #FFAAAA;
+}
+TABLE.spelregeltabel TD.geel, DIV.tegels DIV.index-link-hoofd  {
+	background-color : #fff2cc;
+}
+TABLE.spelregeltabel TD.groen {
+	background-color : #AAFFAA;
+}
+TABLE.spelregeltabel TD {
+	background-color : #E9E9E9;
+}
+DIV.tegels DIV.index-onderwerp {
 	background-color : #FFBB00;
 }
 
 /* KLEUREN IN INDEX EN HULPTABELLEN ======================================= */
 
-TABLE.index THEAD TH, TABLE.hulptabel THEAD TH {
+#appendix THEAD TH {
 	background-color : #777777;
 }
 
-/* AANPASSINGEN OP KLEUREN IN DONKERE MODUS cq DARK MODE
+/* AANPASSINGEN OP KLEUREN IN DONKERE MODUS
 ======================================= */
-
-/* Op touchschermen wil je geen hover effecten omdat die actief blijven nadat een element dat aangetikt is. 
-   pointer : fine selecteert op devices waar hovering mogelijk is, en sluit touch schermen dus uit. */
-
-@media (pointer : fine) {
-	A:HOVER { color : #EF790C; }
-	A.video:HOVER {
-		border-color : #999999 #000000 #000000 #999999;
-		background-image : none;
-		background-color : #CCCCCC;
-	}
-	DIV.tegels DIV A:HOVER {
-		background-color : #EF790C;
-		color : white;
-	}
-	#menu A:hover, #menu A.actief:hover, #menu A.zichtbaar:hover {
-		background-color : black;
-	}
-}
-
-/* Aanpassing in de kleuren voor de dark mode. */
 
 @media (prefers-color-scheme: dark) {
 	BODY { background-color : black; }
@@ -287,17 +263,7 @@ TABLE.index THEAD TH, TABLE.hulptabel THEAD TH {
 	TABLE.hulptabel TD { background-color : #AAAAAA; border-color : black; }
 	#menu { background-color : #888888; }
 	.knipper > SPAN.nadruk, TR.knipper TD > SPAN.nadruk, LI.knipper SPAN.nadruk { color : inherit; }
-	.knipper.opmerking SPAN.nadruk, .opmerking .knipper SPAN.nadruk { color : inherit; }
-	#menu A.zichtbaar {	background-color : rgba(0,0,0,.4); color : rgb(180,180,180); }
-	#menu A.actief { background-color : black; color : rgb(200,200,200); }
 }
-
-/* Op niet-touchschermen moeten de hovers ingesteld worden. */ 
-
-@media (pointer : fine) and (prefers-color-scheme: dark) {
-  #menu A:hover, #menu A.actief:hover, #menu A.zichtbaar:hover { background-color : rgb(210,210,210); color : #EF790C; }
-}
-
 </style>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
