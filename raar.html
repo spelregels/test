@@ -75,19 +75,18 @@ LI {
 
 /* STIJLEN VOOR SPELREGELS =================================== */
 
+TABLE.spelregels {
+	margin-bottom : 5px;
+}
 /* TH's in de THEAD sticky maken.
    Sticky toewijzen op THEAD zelf werkt niet in Chrome
    Klasse wordt in javascript toegewezen aan alle tabellen met 'spelregels'
    klasse. Indien er geen ondersteuning is voor Javascript, dan zorgt dit
-   ervoor dat deze headers ook niet sticky zijn. Navigatie via hyperlinks naar 
-   tekst in tabellen met sticky headers gaat zonder javascript (functie Navigatie
-   in het script hieronder) niet goed. 
-   Alleen op de index wordt de stijl in de HTML toegewezen; er zijn geen links naar de
-   index toe, waardoor bovenbedoeld navigatie probleem zich hier niet voordoet.*/
-TABLE.sticky-tabelkop THEAD TH {
+   ervoor dat de headers ook niet sticky zijn, wat gewenst is omdat de 
+   navigatie via links in het document dan niet goed gaat. */
+TABLE.sticky-tabelkop THEAD TH, #index THEAD TH {
 	position : -webkit-sticky;
 	position : sticky;
-	z-index : 2; /* anders worden video links eroverheen gezet */
 	top : 0px;
 }
 TABLE.spelregels TH { 
@@ -105,58 +104,19 @@ TABLE.spelregels TR TH:first-child:not(:last-child) {
 	width : 1px;
 }
 TABLE.spelregels TD {
-	padding : 0.60em;
+	padding : 10px;
 }
 .opmerking { 
 	font-style : italic; 
-	font-size : 0.9em;
-	margin-top : 0.4em;
+	font-size : 90%;
+	margin-top : 5px;
 	color : #777777;
 }
-DIV.per2024 {
+DIV.per2018 {
 	margin-left : -10px;
-	padding-left : 3px;
-	border-left : 7px solid rgb(100,150,255);
+	padding-left : 5px;
+	border-left : 5px solid black;
 }
-LI DIV.per2024 {
-	margin-left : -25px;
-	padding-left : 20px;
-	border-left : 5px solid rgb(100,150,255);
-}
-SPAN.per2024 {
-	border-bottom : dashed 2px rgb(100,150,255);
-}
-.verwijderd2019 {
-	display : none;
-}
-.verwijderd2024 {
-	text-decoration: line-through; 
-	color : rgb(100,150,255); 
-}
-
-/* STIJLEN VOOR HIGHLIGHT VAN TEKST WAARNAAR VIA LINK NAAR GESPRONGEN WORDT */
-
-.knipper {
-	transition : background-color 1s;
-	background-color : #fff099;
-}
-/* Tekst met nadruk-stijl (.nadruk) wordt gewoonlijk niet benadrukt, maar tijdens 
-   het highlighten van de tekst wel. De tekst wordt dan dikgedrukt gemaakt, waarbij de 
-   tekstkleur iets lichter gemaakt wordt om de nadruk niet te sterk te maken.
-   Nadruk alleen toepassen op een SPAN:
-	- die direct descendant van een gehighlight element is
-	- direct in een tabelrij met highlight
-	- op enige plek onder een gehighlight listitem (hoeft niet *direct* onderonder te zijn)
-   Zodat nadruk niet gegeven wordt m.n. als een geheel hoofdstuk gehighlight wordt.
-*/
-.knipper > SPAN.nadruk, TR.knipper TD > SPAN.nadruk, LI.knipper SPAN.nadruk, #begrippenlijst SPAN {
-	font-weight : bold;
-	color : rgb(60,60,60);
-}
-.knipper.opmerking SPAN.nadruk, .opmerking .knipper SPAN.nadruk {
-	color : rgb(130,130,130);
-}
-
 
 /* STIJLEN VOOR HET MENU ONDERIN DE PAGINA =================================== */
 
@@ -169,7 +129,6 @@ SPAN.per2024 {
 	white-space : nowrap;
 	overflow-x : auto;
 	overflow-y : hidden;
-	z-index : 3;
 }
 #menu A {
 	display : table-cell;
